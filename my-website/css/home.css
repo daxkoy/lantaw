@@ -16,9 +16,9 @@ body { font-family: Arial, sans-serif; background: #111; color: #fff; }
 /* LOGO FIX */
 .navbar img,
 .nav-logo {
-  height: 75px;          /* mas malaki na */
+  height: 100px; /* */
   width: auto;
-  background: transparent; /* siguradong walang white bg */
+  background: transparent; /* */
 }
 
 
@@ -250,4 +250,5 @@ body { font-family: Arial, sans-serif; background: #111; color: #fff; }
 .footer-links a:hover {
   color: #fff;
 }
+
 
