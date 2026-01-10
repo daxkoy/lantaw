@@ -3,21 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <title>My Website</title>
-  <link rel="stylesheet" href="./css/home.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="home.css">
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <img src="./lantaw.png" alt="Lantaw Logo" class="nav-logo">
-  </header>
+  <!-- ===== NAVBAR ===== -->
+  <div class="navbar">
+    <div class="nav-left">
+      <img src="lantaw.png" alt="Lantaw Logo" class="nav-logo">
+    </div>
 
-  <!-- CONTENT -->
-  <main class="content">
-    <h1>Website Loaded</h1>
-    <p>👍</p>
-  </main>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <input type="text" class="search-bar" placeholder="Search...">
+    </div>
+  </div>
+
+  <!-- ===== BANNER ===== -->
+  <div class="banner" style="background-image: url('banner.jpg');">
+    <h1>The Tank</h1>
+  </div>
+
+  <!-- ===== TRENDING MOVIES ===== -->
+  <div class="row">
+    <h2>Trending Movies</h2>
+    <div class="list">
+      <img src="movie1.jpg">
+      <img src="movie2.jpg">
+      <img src="movie3.jpg">
+      <img src="movie4.jpg">
+      <img src="movie5.jpg">
+    </div>
+  </div>
+
+  <!-- ===== TRENDING TV SHOWS ===== -->
+  <div class="row">
+    <h2>Trending TV Shows</h2>
+    <div class="list">
+      <img src="tv1.jpg">
+      <img src="tv2.jpg">
+      <img src="tv3.jpg">
+      <img src="tv4.jpg">
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <div class="footer">
+    <div class="footer-content">
+      <p>© 2025 My Website. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Disclaimer</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
-
