@@ -7,88 +7,95 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <img src="lantaw.png" alt="Lantaw Logo" class="nav-logo">
-  </nav>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <img src="lantaw.png" class="nav-logo">
+  <input type="text" class="search-bar" placeholder="Search..." onkeyup="searchShow(this.value)">
+</nav>
 
-  <!-- CONTENT -->
-  <main class="container">
+<!-- CONTENT -->
+<div class="container" id="content">
 
-    <!-- MOVIES -->
-    <section class="section">
-      <h2>🎬 Movies</h2>
-      <div class="card-row">
-        <button class="card" onclick="openMovie('Movie Title')">
-          Movie Sample
-        </button>
-      </div>
-    </section>
-
-    <!-- TV SHOWS -->
-    <section class="section">
-      <h2>📺 TV Shows</h2>
-      <div class="card-row">
-        <button class="card" onclick="openSeries('TV Show Sample')">
-          TV Show Sample
-        </button>
-      </div>
-    </section>
-
-    <!-- ANIME -->
-    <section class="section">
-      <h2>🍥 Anime</h2>
-      <div class="card-row">
-        <button class="card" onclick="openSeries('One Piece')">
-          One Piece
-        </button>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- MODAL -->
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">×</span>
-
-      <h2 id="modal-title"></h2>
-
-      <!-- EPISODE LIST -->
-      <div class="episodes">
-        <button onclick="playEpisode('VIDEO_URL_EP1')">Episode 1</button>
-        <button onclick="playEpisode('VIDEO_URL_EP2')">Episode 2</button>
-        <button onclick="playEpisode('VIDEO_URL_EP3')">Episode 3</button>
-      </div>
-
-      <!-- PLAYER -->
-      <iframe id="player" allowfullscreen></iframe>
+  <!-- ANIME -->
+  <section class="section">
+    <h2>🍥 Anime</h2>
+    <div class="card-row">
+      <button class="card" onclick="openShow('One Piece')">One Piece</button>
+      <button class="card" onclick="openShow('Naruto')">Naruto</button>
     </div>
+  </section>
+
+  <!-- TV SHOWS -->
+  <section class="section">
+    <h2>📺 TV Shows</h2>
+    <div class="card-row">
+      <button class="card" onclick="openShow('Breaking Bad')">Breaking Bad</button>
+      <button class="card" onclick="openShow('Money Heist')">Money Heist</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">×</span>
+    <h2 id="show-title"></h2>
+
+    <div class="episodes" id="episode-list"></div>
+
+    <iframe id="player" allowfullscreen></iframe>
   </div>
+</div>
 
-  <!-- JS -->
-  <script>
-    function openSeries(title) {
-      document.getElementById("modal-title").innerText = title;
-      document.getElementById("modal").style.display = "flex";
-      document.getElementById("player").src = "";
-    }
+<script>
+/* DATABASE (IKAW MAG PAPALIT NG LINKS) */
+const shows = {
+  "One Piece": [
+    { ep: "Episode 1", url: "VIDEO_URL_OP1" },
+    { ep: "Episode 2", url: "VIDEO_URL_OP2" }
+  ],
+  "Naruto": [
+    { ep: "Episode 1", url: "VIDEO_URL_NAR1" },
+    { ep: "Episode 2", url: "VIDEO_URL_NAR2" }
+  ],
+  "Breaking Bad": [
+    { ep: "Episode 1", url: "VIDEO_URL_BB1" }
+  ],
+  "Money Heist": [
+    { ep: "Episode 1", url: "VIDEO_URL_MH1" }
+  ]
+};
 
-    function openMovie(title) {
-      document.getElementById("modal-title").innerText = title;
-      document.getElementById("modal").style.display = "flex";
-      document.getElementById("player").src = "MOVIE_VIDEO_URL";
-    }
+function openShow(name) {
+  document.getElementById("show-title").innerText = name;
+  const list = document.getElementById("episode-list");
+  list.innerHTML = "";
 
-    function playEpisode(url) {
-      document.getElementById("player").src = url;
-    }
+  shows[name].forEach(e => {
+    const btn = document.createElement("button");
+    btn.innerText = e.ep;
+    btn.onclick = () => document.getElementById("player").src = e.url;
+    list.appendChild(btn);
+  });
 
-    function closeModal() {
-      document.getElementById("modal").style.display = "none";
-      document.getElementById("player").src = "";
-    }
-  </script>
+  document.getElementById("player").src = "";
+  document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+  document.getElementById("player").src = "";
+}
+
+/* SEARCH */
+function searchShow(text) {
+  text = text.toLowerCase();
+  document.querySelectorAll(".card").forEach(card => {
+    card.style.display = card.innerText.toLowerCase().includes(text) ? "block" : "none";
+  });
+}
+</script>
 
 </body>
 </html>
