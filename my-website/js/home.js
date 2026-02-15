@@ -240,62 +240,62 @@ function changeServer() {
 
   if (isMovie) {
     switch (server) {
-      case 'vidsrc.cc':
-        embedURL = `https://vidsrc.cc/v2/embed/movie/${id}`;
-        break;
-      case 'vidsrc.me':
-        embedURL = `https://vidsrc.net/embed/movie/?tmdb=${id}`;
-        break;
       case 'player.videasy.net':
         embedURL = `https://player.videasy.net/movie/${id}`;
+        break;
+      case 'vidsrc.cc':
+        embedURL = `https://vidsrc.cc/v2/embed/movie/${id}`;
         break;
       case '2embed':
         embedURL = `https://www.2embed.stream/embed/movie/${id}`;
         break;
-      case 'embedapi':
-        embedURL = `https://player.autoembed.cc/embed/movie/${id}`;
-        break;
       case 'autoembed':
         embedURL = `https://player.autoembed.cc/embed/movie/${id}`;
-        break;
-      case 'smashystream':
-        embedURL = `https://player.smashy.stream/movie/${id}`;
         break;
       case 'multiembed':
         embedURL = `https://multiembed.mov/?tmdb=1&video_id=${id}`;
         break;
+      case 'smashystream':
+        embedURL = `https://player.smashy.stream/movie/${id}`;
+        break;
+      case 'vidsrc.me':
+        embedURL = `https://vidsrc.net/embed/movie/?tmdb=${id}`;
+        break;
+      case 'embedapi':
+        embedURL = `https://player.autoembed.cc/embed/movie/${id}`;
+        break;
       default:
-        embedURL = `https://vidsrc.cc/v2/embed/movie/${id}`;
+        embedURL = `https://player.videasy.net/movie/${id}`;
     }
   } else {
     // TV shows and anime
     switch (server) {
-      case 'vidsrc.cc':
-        embedURL = `https://vidsrc.cc/v2/embed/tv/${id}/${s}/${e}`;
-        break;
-      case 'vidsrc.me':
-        embedURL = `https://vidsrc.net/embed/tv/?tmdb=${id}&season=${s}&episode=${e}`;
-        break;
       case 'player.videasy.net':
         embedURL = `https://player.videasy.net/tv/${id}/${s}/${e}`;
+        break;
+      case 'vidsrc.cc':
+        embedURL = `https://vidsrc.cc/v2/embed/tv/${id}/${s}/${e}`;
         break;
       case '2embed':
         embedURL = `https://www.2embed.stream/embed/tv/${id}/${s}/${e}`;
         break;
-      case 'embedapi':
-        embedURL = `https://player.autoembed.cc/embed/tv/${id}/${s}/${e}`;
-        break;
       case 'autoembed':
         embedURL = `https://player.autoembed.cc/embed/tv/${id}/${s}/${e}`;
-        break;
-      case 'smashystream':
-        embedURL = `https://player.smashy.stream/tv/${id}/${s}/${e}`;
         break;
       case 'multiembed':
         embedURL = `https://multiembed.mov/?tmdb=1&video_id=${id}&s=${s}&e=${e}`;
         break;
+      case 'smashystream':
+        embedURL = `https://player.smashy.stream/tv/${id}/${s}/${e}`;
+        break;
+      case 'vidsrc.me':
+        embedURL = `https://vidsrc.net/embed/tv/?tmdb=${id}&season=${s}&episode=${e}`;
+        break;
+      case 'embedapi':
+        embedURL = `https://player.autoembed.cc/embed/tv/${id}/${s}/${e}`;
+        break;
       default:
-        embedURL = `https://vidsrc.cc/v2/embed/tv/${id}/${s}/${e}`;
+        embedURL = `https://player.videasy.net/tv/${id}/${s}/${e}`;
     }
   }
 
