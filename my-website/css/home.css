@@ -92,6 +92,22 @@ body {
   filter: brightness(1.2);
 }
 
+/* ===== SECTION HEADER ===== */
+.section-header {
+  text-align: center;
+  margin: 40px 20px 10px;
+  padding: 15px 0;
+  border-top: 2px solid #e50914;
+  border-bottom: 2px solid #e50914;
+}
+
+.section-header h1 {
+  font-size: 28px;
+  color: #e50914;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
 /* ===== MODAL ===== */
 .modal {
   position: fixed;
