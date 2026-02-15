@@ -30,6 +30,32 @@ async function fetchTrendingAnime() {
   return allResults;
 }
 
+async function fetchTagalogMovies(startYear, endYear) {
+  let allResults = [];
+  // Fetch multiple pages to get more movies
+  for (let page = 1; page <= 5; page++) {
+    try {
+      const res = await fetch(
+        `${BASE_URL}/discover/movie?api_key=${API_KEY}` +
+        `&with_original_language=tl` +
+        `&primary_release_date.gte=${startYear}-01-01` +
+        `&primary_release_date.lte=${endYear}-12-31` +
+        `&sort_by=popularity.desc` +
+        `&page=${page}`
+      );
+      const data = await res.json();
+      if (data.results && data.results.length > 0) {
+        allResults = allResults.concat(data.results);
+      } else {
+        break; // No more results
+      }
+    } catch (err) {
+      break;
+    }
+  }
+  return allResults;
+}
+
 async function fetchTVDetails(tvId) {
   const res = await fetch(`${BASE_URL}/tv/${tvId}?api_key=${API_KEY}`);
   const data = await res.json();
@@ -356,6 +382,7 @@ async function searchTMDB() {
 // ===== INIT =====
 
 async function init() {
+  // Load trending first (fast)
   const movies = await fetchTrending('movie');
   const tvShows = await fetchTrending('tv');
   const anime = await fetchTrendingAnime();
@@ -364,6 +391,37 @@ async function init() {
   displayList(movies, 'movies-list', 'movie');
   displayList(tvShows, 'tvshows-list', 'tv');
   displayList(anime, 'anime-list', 'anime');
+
+  // Load Tagalog movies by year range (parallel)
+  const tagalogRanges = [
+    { start: 2024, end: 2026, id: 'tagalog-2024-2026' },
+    { start: 2020, end: 2023, id: 'tagalog-2020-2023' },
+    { start: 2015, end: 2019, id: 'tagalog-2015-2019' },
+    { start: 2010, end: 2014, id: 'tagalog-2010-2014' },
+    { start: 2005, end: 2009, id: 'tagalog-2005-2009' },
+    { start: 2000, end: 2004, id: 'tagalog-2000-2004' },
+    { start: 1995, end: 1999, id: 'tagalog-1995-1999' },
+    { start: 1990, end: 1994, id: 'tagalog-1990-1994' },
+  ];
+
+  // Show loading text while fetching
+  tagalogRanges.forEach(range => {
+    const container = document.getElementById(range.id);
+    if (container) container.innerHTML = '<p style="color:#999;padding:10px;">Loading Tagalog movies...</p>';
+  });
+
+  // Fetch all ranges in parallel
+  const tagalogPromises = tagalogRanges.map(async (range) => {
+    try {
+      const results = await fetchTagalogMovies(range.start, range.end);
+      displayList(results, range.id, 'movie');
+    } catch (err) {
+      const container = document.getElementById(range.id);
+      if (container) container.innerHTML = '<p style="color:#999;padding:10px;">No movies found</p>';
+    }
+  });
+
+  await Promise.all(tagalogPromises);
 }
 
 init();
