@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Website</title>
+  <title>Lantaw - Stream Movies, TV Shows & Anime</title>
   <link rel="stylesheet" href="css/home.css">
   <link rel="preload" href="css/home.css" as="style">
   <link rel="preload" href="js/home.js" as="script">
@@ -20,7 +20,7 @@
 
   <div class="nav-links">
     <a href="#">Home</a>
-    <input type="text" class="search-bar" placeholder="Search...">
+    <input type="text" class="search-bar" placeholder="Search..." onfocus="openSearchModal()">
   </div>
 </div>
 <!-- NAVBAR END -->
@@ -57,15 +57,38 @@
   </div>
 </div>
       
+      <div class="episode-selector" id="episode-selector" style="display:none;">
+        <div class="episode-row">
+          <div class="episode-field">
+            <label for="season-select">Season:</label>
+            <select id="season-select" onchange="onSeasonChange()"></select>
+          </div>
+          <div class="episode-field">
+            <label for="episode-select">Episode:</label>
+            <select id="episode-select" onchange="onEpisodeChange()"></select>
+          </div>
+        </div>
+      </div>
+
       <div class="server-selector">
         <label for="server">Change Server:</label>
         <select id="server" onchange="changeServer()">
           <option value="vidsrc.cc">Vidsrc.cc</option>
           <option value="vidsrc.me">Vidsrc.me</option>
           <option value="player.videasy.net">Player.Videasy.net</option>
+          <option value="2embed">2Embed</option>
+          <option value="embedapi">Embed API</option>
+          <option value="autoembed">AutoEmbed</option>
+          <option value="smashystream">SmashyStream</option>
+          <option value="multiembed">MultiEmbed</option>
         </select>
       </div>
-      <iframe id="modal-video" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+      <iframe id="modal-video" width="100%" height="400" frameborder="0" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture" sandbox="allow-forms allow-scripts allow-same-origin allow-popups"></iframe>
+      
+      <div class="episode-nav" id="episode-nav" style="display:none;">
+        <button id="prev-episode" onclick="prevEpisode()" disabled>Previous Episode</button>
+        <button id="next-episode" onclick="nextEpisode()">Next Episode</button>
+      </div>
     </div>
   </div>
 
