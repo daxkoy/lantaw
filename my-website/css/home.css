@@ -146,6 +146,149 @@ body {
   font-size: 24px;
 }
 
+/* ===== EPISODE SELECTOR ===== */
+.episode-selector {
+  margin: 15px 0;
+  padding: 12px 15px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.episode-row {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.episode-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 140px;
+}
+
+.episode-field label {
+  color: #ccc;
+  font-size: 14px;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.episode-field select {
+  flex: 1;
+  padding: 8px 12px;
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+  padding-right: 32px;
+}
+
+.episode-field select:hover {
+  border-color: #e50914;
+}
+
+.episode-field select:focus {
+  outline: none;
+  border-color: #e50914;
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.3);
+}
+
+/* ===== SERVER SELECTOR ===== */
+.server-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+  padding: 10px 15px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.server-selector label {
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.server-selector select {
+  flex: 1;
+  padding: 8px 12px;
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+  padding-right: 32px;
+}
+
+.server-selector select:hover {
+  border-color: #e50914;
+}
+
+.server-selector select:focus {
+  outline: none;
+  border-color: #e50914;
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.3);
+}
+
+/* ===== EPISODE LOADING ===== */
+.episode-loading {
+  color: #999;
+  font-size: 13px;
+  text-align: center;
+  padding: 8px;
+}
+
+/* ===== EPISODE NAV BUTTONS ===== */
+.episode-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+.episode-nav button {
+  flex: 1;
+  padding: 8px 16px;
+  background: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.episode-nav button:hover {
+  background: #b0060f;
+}
+
+.episode-nav button:disabled {
+  background: #333;
+  color: #666;
+  cursor: not-allowed;
+}
+
 /* ===== SEARCH MODAL ===== */
 .search-modal {
   position: fixed;
@@ -219,6 +362,25 @@ body {
 
   .search-modal input {
     width: 90%;
+  }
+
+  .episode-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .episode-field {
+    width: 100%;
+  }
+
+  .server-selector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .episode-nav button {
+    font-size: 12px;
+    padding: 6px 10px;
   }
 }
 
